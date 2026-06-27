@@ -111,6 +111,21 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .dl-label{color:#cbd5e1;flex:1;}
 .dl-value{color:#fff;font-weight:600;}
 
+/* ── NEW COMPACT CALENDAR LAYOUT ── */
+.calendar-layout {display: flex; flex-direction: column; gap: 8px;}
+.cal-days-grid {display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;}
+.cal-days-grid span {font-size: 11px; font-weight: 600; color: #4a5568; padding-bottom: 6px;}
+.cal-dates-grid {display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center;}
+.cal-cell {background: #0b1437; border: 1px solid #1b2e6e; border-radius: 6px; padding: 6px 2px; min-height: 38px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; position: relative;}
+.cal-cell.empty {background: transparent; border: none;}
+.cal-num {font-size: 11.5px; font-weight: 600; color: #e2e8f0;}
+.cal-cell.empty .cal-num {color: #4a5568;}
+.cal-dots {display: flex; gap: 2.5px; justify-content: center; width: 100%; margin-top: 2px;}
+.dot {width: 4.5px; height: 4.5px; border-radius: 50%; display: inline-block;}
+.dot.p {background: #4ade80;} /* Present */
+.dot.a {background: #f87171;} /* Absent */
+.dot.l {background: #fbbf24;} /* Late */
+
 /* ── FILTER UTILITIES PANEL ── */
 .filter-container{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:12px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 18px rgba(0,0,0,.2);}
 .search-input-wrap{position:relative;flex:1;display:flex;align-items:center;}
@@ -163,7 +178,8 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 
 .footer-text{text-align:center;color:#4a5568;font-size:11px;padding:4px 0 10px;}
 
-@media(max-width:1300px){.kpi-grid{grid-template-columns:repeat(3,1fr);}.charts-grid{grid-template-columns:1fr;}}
+@media(max-width:1400px){.charts-grid{grid-template-columns: 1fr;}}
+@media(max-width:1300px){.kpi-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:750px){.kpi-grid{grid-template-columns:repeat(2,1fr);}.filter-container{flex-direction:column;align-items:stretch;}.select-input-wrap{width:100%;}}
 </style>
 </head>
@@ -195,7 +211,7 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 
   <div class="sidebar">
     <ul>
-      <li ><a href="index.html"><i class="fa-solid fa-house"></i>Dashboard</a></li>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i>Dashboard</a></li>
       <li><a href="my profile.html"><i class="fa-regular fa-user"></i>My Profile</a></li>
       <li><a href="team-members.html"><i class="fa-solid fa-users"></i>Team Members</a></li>
       <li class="active"><a href="attendance.html"><i class="fa-solid fa-calendar-check"></i>Attendance</a></li>
@@ -291,20 +307,49 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
         </div>
 
         <div class="chart-panel">
-          <div class="chart-header"><h3>Attendance Summary</h3></div>
-          <div class="donut-layout">
-            <div class="donut-graphic">
-              <svg viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#0b1437" stroke-width="4.2"/>
-                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#4299e1" stroke-width="4.2" stroke-dasharray="83.3 16.7" stroke-dashoffset="25"/>
-                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f87171" stroke-width="4.2" stroke-dasharray="11.1 88.9" stroke-dashoffset="-58.3"/>
-                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#fbbf24" stroke-width="4.2" stroke-dasharray="5.6 94.4" stroke-dashoffset="-69.4"/>
-              </svg>
+          <div class="chart-header">
+            <h3>Monthly Roster Log</h3>
+            <span style="font-size:12px; color:#4299e1; font-weight:600;">May 2024</span>
+          </div>
+          <div class="calendar-layout">
+            <div class="cal-days-grid">
+              <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
             </div>
-            <div class="donut-legend-column">
-              <div class="dl-row"><div class="dl-dot" style="background:#4299e1"></div><span class="dl-label">Present</span><span class="dl-value">15 (83.3%)</span></div>
-              <div class="dl-row"><div class="dl-dot" style="background:#f87171"></div><span class="dl-label">Absent</span><span class="dl-value">2 (11.1%)</span></div>
-              <div class="dl-row"><div class="dl-dot" style="background:#fbbf24"></div><span class="dl-label">Late</span><span class="dl-value">1 (5.6%)</span></div>
+            <div class="cal-dates-grid">
+              <span class="cal-cell empty"></span><span class="cal-cell empty"></span>
+              <span class="cal-cell empty"></span><span class="cal-cell empty"></span>
+              
+              <div class="cal-cell"><span class="cal-num">1</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">2</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">3</span><div class="cal-dots"><span class="dot l"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">4</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">5</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">6</span><div class="cal-dots"><span class="dot a"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">7</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">8</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">9</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">10</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">11</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">12</span><div class="cal-dots"><span class="dot l"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">13</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">14</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">15</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">16</span><div class="cal-dots"><span class="dot a"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">17</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">18</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">19</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell" style="border-color:#4299e1;"><span class="cal-num" style="color:#4299e1">20</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell" style="border-color:#4299e1;"><span class="cal-num" style="color:#4299e1">21</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell" style="border-color:#4299e1;"><span class="cal-num" style="color:#4299e1">22</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell" style="border-color:#4299e1;"><span class="cal-num" style="color:#4299e1">23</span><div class="cal-dots"><span class="dot p"></span></div></div>
+              <div class="cal-cell" style="border-color:#4299e1;"><span class="cal-num" style="color:#4299e1">24</span><div class="cal-dots"><span class="dot l"></span></div></div>
+              <div class="cal-cell" style="border-color:#4299e1;"><span class="cal-num" style="color:#4299e1">25</span><div class="cal-dots"><span class="dot a"></span></div></div>
+              <div class="cal-cell" style="border-color:#4299e1;"><span class="cal-num" style="color:#4299e1">26</span><div class="cal-dots"><span class="dot a"></span></div></div>
+              <div class="cal-cell"><span class="cal-num">27</span><div class="cal-dots"></div></div>
+              <div class="cal-cell"><span class="cal-num">28</span><div class="cal-dots"></div></div>
+              <div class="cal-cell"><span class="cal-num">29</span><div class="cal-dots"></div></div>
+              <div class="cal-cell"><span class="cal-num">30</span><div class="cal-dots"></div></div>
+              <div class="cal-cell"><span class="cal-num">31</span><div class="cal-dots"></div></div>
             </div>
           </div>
         </div>
@@ -448,7 +493,12 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
             <a href="#" class="p-btn"><i class="fa-solid fa-chevron-right" style="font-size:10px"></i></a>
           </div>
         </div>
-      </div> <div class="footer-text">© 2024 Employee Management System. All rights reserved.</div>
+      </div> 
 
-    </div> </div> </div> </body>
+      <div class="footer-text">© 2024 Employee Management System. All rights reserved.</div>
+
+    </div> 
+  </div> 
+</div> 
+</body>
 </html>
