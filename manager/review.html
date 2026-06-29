@@ -87,8 +87,11 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .kpi-card.rating-r .kpi-icon {color: #a78bfa; border-color: rgba(167,139,250,0.3);}
 
 /* ── SPLIT INTERACTIVE WORKSPACE GRID (Table left, Panels right) ── */
-.workspace-layout-split{display:grid;grid-template-columns:1fr 310px;gap:14px;align-items:flex-start;}
+.workspace-layout-split{display:grid;grid-template-columns:1fr 480px;gap:14px;align-items:flex-start;}
 .left-block-workspace, .right-block-workspace{display:flex;flex-direction:column;gap:14px;}
+
+/* Side-by-Side Panels Row Container */
+.info-panels-row{display:grid;grid-template-columns:repeat(2, 1fr);gap:14px;}
 
 /* Left Main Sheet Table Wrapper Panel Component */
 .table-panel{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.2);display:flex;flex-direction:column;overflow:hidden;}
@@ -156,25 +159,25 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .p-btn.active{background:#4299e1;border-color:#4299e1;color:#fff;}
 
 /* ── RIGHT PANEL INFORMATION STACK COMPONENTS ── */
-.info-card-panel{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:16px;box-shadow:0 4px 18px rgba(0,0,0,.2);}
+.info-card-panel{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:16px;box-shadow:0 4px 18px rgba(0,0,0,.2);display:flex;flex-direction:column;justify-content:space-between;}
 .info-card-panel h3{font-size:14px;font-weight:600;color:#fff;margin-bottom:14px;border-bottom:1px solid #1b2e6e;padding-bottom:8px;}
 
 /* Donut Graph Component Structure */
 .donut-layout-block{display:flex;align-items:center;gap:12px;margin-bottom:4px;}
-.donut-graphic-wrapper{position:relative;width:100px;height:100px;flex-shrink:0;}
-.donut-graphic-wrapper svg{width:100px;height:100px;transform:rotate(-90deg);}
-.donut-legends-column{flex:1;display:flex;flex-direction:column;gap:6px;}
-.legend-row-item{display:flex;align-items:center;gap:6px;font-size:11.5px;}
-.legend-dot-indicator{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.donut-graphic-wrapper{position:relative;width:75px;height:75px;flex-shrink:0;}
+.donut-graphic-wrapper svg{width:75px;height:75px;transform:rotate(-90deg);}
+.donut-legends-column{flex:1;display:flex;flex-direction:column;gap:4px;}
+.legend-row-item{display:flex;align-items:center;gap:6px;font-size:11px;}
+.legend-dot-indicator{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .legend-label-txt{color:#cbd5e1;flex:1;}
 .legend-val-txt{color:#8898aa;font-weight:500;}
 
 /* Process Details rows metrics formatting */
-.details-list-rows{display:flex;flex-direction:column;gap:12px;}
-.detail-meta-item{display:flex;gap:12px;align-items:flex-start;}
-.detail-meta-item i{color:#4299e1;font-size:13px;width:14px;margin-top:2px;text-align:center;}
-.meta-txt-wrap h5{font-size:12px;font-weight:500;color:#8898aa;}
-.meta-txt-wrap p{font-size:12.5px;font-weight:600;color:#e2e8f0;margin-top:1px;}
+.details-list-rows{display:flex;flex-direction:column;gap:10px;}
+.detail-meta-item{display:flex;gap:10px;align-items:flex-start;}
+.detail-meta-item i{color:#4299e1;font-size:12px;width:14px;margin-top:2px;text-align:center;}
+.meta-txt-wrap h5{font-size:11px;font-weight:500;color:#8898aa;}
+.meta-txt-wrap p{font-size:12px;font-weight:600;color:#e2e8f0;margin-top:1px;}
 
 /* Quick Actions Button menu configuration links */
 .quick-action-links-list{display:flex;flex-direction:column;gap:1px;}
@@ -186,9 +189,9 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 
 .footer-text{text-align:center;color:#4a5568;font-size:11px;padding:4px 0 10px;}
 
-@media(max-width:1400px){.workspace-layout-split{grid-template-columns:1fr;}}
+@media(max-width:1400px){.workspace-layout-split{grid-template-columns:1fr;}.info-panels-row{grid-template-columns:repeat(2, 1fr);}}
 @media(max-width:1200px){.kpi-grid{grid-template-columns:repeat(3,1fr);}.filter-row{flex-wrap:wrap;}.filter-item{flex:1 1 180px !important;}.filter-buttons-wrap{width:100%;justify-content:flex-end;margin-top:4px;}}
-@media(max-width:750px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:750px){.kpi-grid{grid-template-columns:repeat(2,1fr);}.info-panels-row{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -219,15 +222,15 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 
   <div class="sidebar">
   <ul>
-      <li ><a href="index.html"><i class="fa-solid fa-house"></i>Dashboard</a></li>
-      <li ><a href="my profile.html"><i class="fa-regular fa-user"></i>My Profile</a></li>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i>Dashboard</a></li>
+      <li><a href="my profile.html"><i class="fa-regular fa-user"></i>My Profile</a></li>
       <li><a href="team-members.html"><i class="fa-solid fa-users"></i>Team Members</a></li>
-      <li ><a href="attendance.html"><i class="fa-solid fa-calendar-check"></i>Attendance</a></li>
-      <li ><a href="leave request.html"><i class="fa-solid fa-plane-departure"></i>Leave Requests</a></li>
-      <li ><a href="project.html"><i class="fa-solid fa-briefcase"></i>Projects</a></li>
+      <li><a href="attendance.html"><i class="fa-solid fa-calendar-check"></i>Attendance</a></li>
+      <li><a href="leave request.html"><i class="fa-solid fa-plane-departure"></i>Leave Requests</a></li>
+      <li><a href="project.html"><i class="fa-solid fa-briefcase"></i>Projects</a></li>
       <li class="active"><a href="review.html"><i class="fa-solid fa-chart-line"></i>Performance Reviews</a></li>
-      <li ><a href="document.html"><i class="fa-solid fa-file"></i>Documents</a></li>
-      <li ><a href="notification.html"><i class="fa-solid fa-bell"></i>Notifications</a></li>
+      <li><a href="document.html"><i class="fa-solid fa-file"></i>Documents</a></li>
+      <li><a href="notification.html"><i class="fa-solid fa-bell"></i>Notifications</a></li>
       <li><a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a></li>
     </ul>
   </div>
@@ -477,50 +480,53 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 
         <div class="right-block-workspace">
           
-          <div class="info-card-panel">
-            <h3>Rating Distribution</h3>
-            <div class="donut-layout-block">
-              <div class="donut-graphic-wrapper">
-                <svg viewBox="0 0 36 36">
-                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#0b1437" stroke-width="4.2"/>
-                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#4299e1" stroke-width="4.2" stroke-dasharray="40 60" stroke-dashoffset="0"/>
-                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#6366f1" stroke-width="4.2" stroke-dasharray="35 65" stroke-dashoffset="-40"/>
-                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#a78bfa" stroke-width="4.2" stroke-dasharray="15 85" stroke-dashoffset="-75"/>
-                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f43f5e" stroke-width="4.2" stroke-dasharray="5 95" stroke-dashoffset="-90"/>
-                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#fbbf24" stroke-width="4.2" stroke-dasharray="5 95" stroke-dashoffset="-95"/>
-                </svg>
-              </div>
-              <div class="donut-legends-column">
-                <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#4299e1"></div><span class="legend-label-txt">5 Stars</span><span class="legend-val-txt">(5)</span></div>
-                <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#6366f1"></div><span class="legend-label-txt">4 Stars</span><span class="legend-val-txt">(8)</span></div>
-                <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#a78bfa"></div><span class="legend-label-txt">3 Stars</span><span class="legend-val-txt">(3)</span></div>
-                <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#f43f5e"></div><span class="legend-label-txt">2 Stars</span><span class="legend-val-txt">(1)</span></div>
-                <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#fbbf24"></div><span class="legend-label-txt">1 Star</span><span class="legend-val-txt">(1)</span></div>
+          <div class="info-panels-row">
+            
+            <div class="info-card-panel">
+              <h3>Rating Distribution</h3>
+              <div class="donut-layout-block">
+                <div class="donut-graphic-wrapper">
+                  <svg viewBox="0 0 36 36">
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#0b1437" stroke-width="4.2"/>
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#4299e1" stroke-width="4.2" stroke-dasharray="40 60" stroke-dashoffset="0"/>
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#6366f1" stroke-width="4.2" stroke-dasharray="35 65" stroke-dashoffset="-40"/>
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#a78bfa" stroke-width="4.2" stroke-dasharray="15 85" stroke-dashoffset="-75"/>
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f43f5e" stroke-width="4.2" stroke-dasharray="5 95" stroke-dashoffset="-90"/>
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#fbbf24" stroke-width="4.2" stroke-dasharray="5 95" stroke-dashoffset="-95"/>
+                  </svg>
+                </div>
+                <div class="donut-legends-column">
+                  <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#4299e1"></div><span class="legend-label-txt">5 ★</span><span class="legend-val-txt">(5)</span></div>
+                  <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#6366f1"></div><span class="legend-label-txt">4 ★</span><span class="legend-val-txt">(8)</span></div>
+                  <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#a78bfa"></div><span class="legend-label-txt">3 ★</span><span class="legend-val-txt">(3)</span></div>
+                  <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#f43f5e"></div><span class="legend-label-txt">2 ★</span><span class="legend-val-txt">(1)</span></div>
+                  <div class="legend-row-item"><div class="legend-dot-indicator" style="background:#fbbf24"></div><span class="legend-label-txt">1 ★</span><span class="legend-val-txt">(1)</span></div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="info-card-panel">
-            <h3>Review Cycle Details</h3>
-            <div class="details-list-rows">
-              <div class="detail-meta-item">
-                <i class="fa-regular fa-calendar-check"></i>
-                <div class="meta-txt-wrap"><h5>Review Cycle</h5><p>May 2024</p></div>
-              </div>
-              <div class="detail-meta-item">
-                <i class="fa-regular fa-clock"></i>
-                <div class="meta-txt-wrap"><h5>Cycle Duration</h5><p>01 May 2024 - 31 May 2024</p></div>
-              </div>
-              <div class="detail-meta-item">
-                <i class="fa-solid fa-users-gear"></i>
-                <div class="meta-txt-wrap"><h5>Team Members</h5><p>18</p></div>
-              </div>
-              <div class="detail-meta-item">
-                <i class="fa-regular fa-file-excel"></i>
-                <div class="meta-txt-wrap"><h5>Reviews Completed</h5><p>8 (44.4%)</p></div>
+            <div class="info-card-panel">
+              <h3>Review Cycle Details</h3>
+              <div class="details-list-rows">
+                <div class="detail-meta-item">
+                  <i class="fa-regular fa-calendar-check"></i>
+                  <div class="meta-txt-wrap"><h5>Review Cycle</h5><p>May 2024</p></div>
+                </div>
+                <div class="detail-meta-item">
+                  <i class="fa-regular fa-clock"></i>
+                  <div class="meta-txt-wrap"><h5>Duration</h5><p>01 - 31 May</p></div>
+                </div>
+                <div class="detail-meta-item">
+                  <i class="fa-solid fa-users-gear"></i>
+                  <div class="meta-txt-wrap"><h5>Team Size</h5><p>18 Active</p></div>
+                </div>
+                <div class="detail-meta-item">
+                  <i class="fa-regular fa-file-excel"></i>
+                  <div class="meta-txt-wrap"><h5>Completed</h5><p>8 (44.4%)</p></div>
+                </div>
               </div>
             </div>
-            <button class="btn-outline" style="width:100%; margin-top:16px; background: rgba(11,20,55,0.4); justify-content:center; border-color:#1b2e6e;">View Cycle Details</button>
+
           </div>
 
           <div class="info-card-panel">
@@ -541,7 +547,13 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
             </div>
           </div>
 
-        </div> </div> <div class="footer-text">© 2024 Employee Management System. All rights reserved.</div>
+        </div> 
+      </div> 
+      
+      <div class="footer-text">© 2024 Employee Management System. All rights reserved.</div>
 
-    </div> </div> </div> </body>
+    </div> 
+  </div> 
+</div> 
+</body>
 </html>
