@@ -32,17 +32,17 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .nav-profile-info small{font-size:11px;color:#8898aa;}
 
 /* ── BODY WRAP ── */
-.body-wrap{display:flex;flex:1;overflow:hidden;}
+.body-wrap{display:flex;flex:1;overflow:hidden;width:100%;}
 
 /* ── SIDEBAR ── */
-.sidebar{width:220px;height:100%;background:#111c44;border-right:1px solid #1b2e6e;overflow-y:auto;flex-shrink:0;}
+.sidebar{width:220px;height:100%;background:#111c44;border-right:1px solid #1b2e6e;overflow-y:auto;flex-shrink:0;transition: width 0.2s ease;}
 .sidebar ul{list-style:none;padding:8px 0;}
 .sidebar ul li a{display:flex;align-items:center;gap:12px;padding:11px 20px;color:#8898aa;font-size:13.5px;text-decoration:none;transition:.2s;border-left:3px solid transparent;}
 .sidebar ul li a:hover,.sidebar ul li.active a{background:rgba(66,153,225,.1);color:#fff;border-left-color:#4299e1;}
 .sidebar ul li a i{width:16px;font-size:14px;}
 
 /* ── MAIN SECTION ── */
-.main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+.main{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden;}
 
 /* Page Header Utilities */
 .page-header{padding:16px 22px 0;background:#0b1437;}
@@ -71,18 +71,19 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .content::-webkit-scrollbar{width:6px;}
 .content::-webkit-scrollbar-thumb{background:#1b2e6e;border-radius:20px;}
 
-/* ── KPI STATISTICS GRID (5 Columns) ── */
-.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
-.kpi-card{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 18px rgba(0,0,0,.2);transition:.25s;}
+/* ── KPI STATISTICS GRID (Fixed Fluid 5 Columns) ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:12px;width:100%;}
+.kpi-card{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:12px 10px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 18px rgba(0,0,0,.2);transition:.25s;min-width:0;overflow:hidden;}
 .kpi-card:hover{border-color:#4299e1;transform:translateY(-2px);}
-.kpi-icon{width:40px;height:40px;border-radius:10px;background:#0b1437;border:1px solid #1b2e6e;display:flex;align-items:center;justify-content:center;font-size:16px;color:#4299e1;flex-shrink:0;}
-.kpi-info p{font-size:11.5px;color:#8898aa;margin-bottom:2px;}
-.kpi-info h3{font-size:20px;font-weight:700;color:#fff;line-height:1;}
-.kpi-info small{font-size:11px;color:#8898aa;margin-top:4px;display:block;}
+.kpi-icon{width:36px;height:36px;border-radius:10px;background:#0b1437;border:1px solid #1b2e6e;display:flex;align-items:center;justify-content:center;font-size:14px;color:#4299e1;flex-shrink:0;}
+.kpi-info{min-width:0;}
+.kpi-info p{font-size:11px;color:#8898aa;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.kpi-info h3{font-size:calc(15px + 0.3vw);font-weight:700;color:#fff;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.kpi-info small{font-size:10.5px;color:#8898aa;margin-top:4px;display:block;white-space:nowrap;}
 
 /* ── GRAPH SECTIONS WRAPPER ── */
-.charts-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;}
-.chart-panel{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:16px;box-shadow:0 4px 18px rgba(0,0,0,.2);}
+.charts-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;width:100%;}
+.chart-panel{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:16px;box-shadow:0 4px 18px rgba(0,0,0,.2);min-width:0;}
 .chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
 .chart-header h3{font-size:14.5px;font-weight:600;color:#fff;}
 
@@ -90,11 +91,11 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .line-chart-area{position:relative;height:160px;display:flex;gap:12px;margin-bottom:8px;}
 .lc-y-axis{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;padding-bottom:20px;min-width:24px;}
 .lc-y-axis span{font-size:10px;color:#8898aa;}
-.lc-canvas{flex:1;display:flex;flex-direction:column;}
+.lc-canvas{flex:1;display:flex;flex-direction:column;min-width:0;}
 .lc-svg-box{flex:1;border-left:1px solid #1b2e6e;border-bottom:1px solid #1b2e6e;position:relative;}
 .lc-svg-box svg{width:100%;height:100%;position:absolute;top:0;left:0;}
-.lc-x-axis{display:grid;grid-template-columns:repeat(7,1fr);margin-top:6px;}
-.lc-x-axis span{font-size:10.5px;color:#8898aa;text-align:center;}
+.lc-x-axis{display:flex;justify-content:space-between;margin-top:6px;gap:2px;}
+.lc-x-axis span{font-size:10px;color:#8898aa;text-align:center;flex:1;white-space:nowrap;}
 
 /* Legend configurations */
 .chart-legends-footer{display:flex;justify-content:center;align-items:center;gap:20px;margin-top:8px;}
@@ -111,30 +112,30 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .dl-label{color:#cbd5e1;flex:1;}
 .dl-value{color:#fff;font-weight:600;}
 
-/* ── NEW COMPACT CALENDAR LAYOUT ── */
+/* ── FLUID COMPACT CALENDAR LAYOUT ── */
 .calendar-layout {display: flex; flex-direction: column; gap: 8px;}
 .cal-days-grid {display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;}
 .cal-days-grid span {font-size: 11px; font-weight: 600; color: #4a5568; padding-bottom: 6px;}
-.cal-dates-grid {display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center;}
-.cal-cell {background: #0b1437; border: 1px solid #1b2e6e; border-radius: 6px; padding: 6px 2px; min-height: 38px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; position: relative;}
+.cal-dates-grid {display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; text-align: center;}
+.cal-cell {background: #0b1437; border: 1px solid #1b2e6e; border-radius: 6px; padding: 4px 1px; min-height: 32px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; position: relative;}
 .cal-cell.empty {background: transparent; border: none;}
-.cal-num {font-size: 11.5px; font-weight: 600; color: #e2e8f0;}
+.cal-num {font-size: 10.5px; font-weight: 600; color: #e2e8f0;}
 .cal-cell.empty .cal-num {color: #4a5568;}
-.cal-dots {display: flex; gap: 2.5px; justify-content: center; width: 100%; margin-top: 2px;}
-.dot {width: 4.5px; height: 4.5px; border-radius: 50%; display: inline-block;}
+.cal-dots {display: flex; gap: 2px; justify-content: center; width: 100%; margin-top: 2px;}
+.dot {width: 4px; height: 4px; border-radius: 50%; display: inline-block;}
 .dot.p {background: #4ade80;} /* Present */
 .dot.a {background: #f87171;} /* Absent */
 .dot.l {background: #fbbf24;} /* Late */
 
 /* ── FILTER UTILITIES PANEL ── */
-.filter-container{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:12px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 18px rgba(0,0,0,.2);}
-.search-input-wrap{position:relative;flex:1;display:flex;align-items:center;}
+.filter-container{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:12px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;box-shadow:0 4px 18px rgba(0,0,0,.2);}
+.search-input-wrap{position:relative;flex:2 1 200px;display:flex;align-items:center;}
 .search-input-wrap i{position:absolute;left:12px;color:#4a5568;font-size:13px;}
 .search-input-wrap input{width:100%;background:#0b1437;border:1px solid #1b2e6e;border-radius:8px;padding:8px 12px 8px 34px;color:#e2e8f0;font-size:12.5px;outline:none;transition:.2s;}
 .search-input-wrap input:focus{border-color:#4299e1;}
 .search-input-wrap input::placeholder{color:#4a5568;}
 
-.select-input-wrap{position:relative;width:180px;display:flex;align-items:center;}
+.select-input-wrap{position:relative;width:180px;flex:1 1 140px;display:flex;align-items:center;}
 .select-input-wrap select{width:100%;background:#0b1437;border:1px solid #1b2e6e;border-radius:8px;padding:8px 30px 8px 12px;color:#e2e8f0;font-size:12.5px;outline:none;appearance:none;cursor:pointer;transition:.2s;}
 .select-input-wrap select:focus{border-color:#4299e1;}
 .select-input-wrap i{position:absolute;right:12px;color:#8898aa;font-size:10px;pointer-events:none;}
@@ -178,9 +179,20 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 
 .footer-text{text-align:center;color:#4a5568;font-size:11px;padding:4px 0 10px;}
 
-@media(max-width:1400px){.charts-grid{grid-template-columns: 1fr;}}
-@media(max-width:1300px){.kpi-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:750px){.kpi-grid{grid-template-columns:repeat(2,1fr);}.filter-container{flex-direction:column;align-items:stretch;}.select-input-wrap{width:100%;}}
+/* ── RE-ARCHITECTED SAFE RESPONSIVENESS ── */
+@media(max-width:1150px){
+  .sidebar { width: 72px; overflow-x: hidden; }
+  .sidebar ul li a { justify-content: center; padding: 15px 0; gap: 0; }
+  .sidebar ul li a span, .sidebar ul li a text { display: none; } /* Fallback text hidden if separate */
+  /* Hide the link text completely for standard sidebar structures */
+  .sidebar ul li a { font-size: 0; }
+  .sidebar ul li a i { font-size: 16px; width: auto; }
+}
+
+@media(max-width:750px){
+  .navbar-title { display: none; }
+  .header-action-container { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
 </style>
 </head>
 <body>
@@ -266,7 +278,7 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
         </div>
         <div class="kpi-card">
           <div class="kpi-icon"><i class="fa-solid fa-business-time"></i></div>
-          <div class="kpi-info"><p>Average Working Hours</p><h3>8h 15m</h3><small>This Week</small></div>
+          <div class="kpi-info"><p>Avg Hours</p><h3>8h 15m</h3><small>This Week</small></div>
         </div>
       </div>
 
