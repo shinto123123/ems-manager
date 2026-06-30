@@ -102,16 +102,15 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .summary-item p{font-size:11px;color:#8898aa;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .summary-item h4{font-size:15px;font-weight:700;color:#fff;}
 
-/* Donut Styles */
-.donut-body{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:10px;}
-.donut-svg-wrap{position:relative;flex-shrink:0;width:165px;height:165px;} /* Increased size here */
-.donut-svg-wrap svg{width:165px;height:165px;} /* Increased size here */
-.donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
-.donut-legend{flex:1;display:flex;flex-direction:column;gap:8px;overflow:hidden;}
-.leg-row{display:flex;align-items:center;gap:10px;}
-.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.leg-label{flex:1;font-size:12.5px;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.leg-val{font-size:12.5px;font-weight:600;color:#fff;}
+/* Maximize Donut Area & Horizontal Single Line Legend */
+.donut-body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;margin-top:4px;}
+.donut-svg-wrap{position:relative;flex-shrink:0;width:175px;height:175px;display:flex;align-items:center;justify-content:center;}
+.donut-svg-wrap svg{width:100%;height:100%;transform:rotate(-90deg);border-radius:50%;}
+.donut-legend-row{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:14px;border-top:1px solid #1b2e6e;flex-wrap:nowrap;}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11.5px;color:#cbd5e1;white-space:nowrap;}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.leg-val{font-weight:600;color:#fff;margin-left:2px;}
+
 .card-action-footer{border-top:1px solid #1b2e6e;margin-top:14px;padding-top:12px;display:flex;justify-content:center;}
 .view-btn{background:#4299e1;color:#fff;border:none;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:.2s;display:flex;align-items:center;gap:6px;white-space:nowrap;}
 .view-btn:hover{background:#2b7fd1;}
@@ -160,9 +159,10 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
   .kpi-info h2 { font-size: 18px; }
   
   .chart-card, .panel { padding: 12px; }
-  .donut-body { gap: 8px; }
-  .donut-svg-wrap { width: 120px; height: 120px; } /* Proportional scaling down for large graph */
-  .donut-svg-wrap svg { width: 120px; height: 120px; }
+  .donut-body { gap: 10px; }
+  .donut-svg-wrap { width: 135px; height: 135px; }
+  .donut-legend-row { padding-top: 10px; gap: 4px; }
+  .leg-item { font-size: 10.5px; }
 }
 
 @media (max-width: 1150px) {
@@ -307,11 +307,11 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
                   <circle cx="18" cy="18" r="15.9" fill="none" stroke="#fbbf24" stroke-width="4" stroke-dasharray="14 86" stroke-dashoffset="-53"/>
                 </svg>
               </div>
-              <div class="donut-legend">
-                <div class="leg-row"><div class="leg-dot" style="background:#4299e1"></div><span class="leg-label">Completed</span><span class="leg-val">3</span></div>
-                <div class="leg-row"><div class="leg-dot" style="background:#00b5d8"></div><span class="leg-label">In Progress</span><span class="leg-val">2</span></div>
-                <div class="leg-row"><div class="leg-dot" style="background:#fbbf24"></div><span class="leg-label">On Hold</span><span class="leg-val">1</span></div>
-                <div class="leg-row"><div class="leg-dot" style="background:#1b2e6e"></div><span class="leg-label">Not Started</span><span class="leg-val">0</span></div>
+              <div class="donut-legend-row">
+                <div class="leg-item"><div class="leg-dot" style="background:#4299e1"></div><span>Completed<span class="leg-val">3</span></span></div>
+                <div class="leg-item"><div class="leg-dot" style="background:#00b5d8"></div><span>In Progress<span class="leg-val">2</span></span></div>
+                <div class="leg-item"><div class="leg-dot" style="background:#fbbf24"></div><span>On Hold<span class="leg-val">1</span></span></div>
+                <div class="leg-item"><div class="leg-dot" style="background:#1b2e6e"></div><span>Not Started<span class="leg-val">0</span></span></div>
               </div>
             </div>
           </div>
