@@ -82,7 +82,7 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 .kpi-info small{font-size:10.5px;color:#8898aa;margin-top:4px;display:block;white-space:nowrap;}
 
 /* ── GRAPH SECTIONS WRAPPER ── */
-.charts-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;width:100%;}
+.charts-grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:14px;width:100%;}
 .chart-panel{background:#111c44;border:1px solid #1b2e6e;border-radius:14px;padding:16px;box-shadow:0 4px 18px rgba(0,0,0,.2);min-width:0;}
 .chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
 .chart-header h3{font-size:14.5px;font-weight:600;color:#fff;}
@@ -183,10 +183,12 @@ body{background:#0b1437;display:flex;flex-direction:column;height:100vh;overflow
 @media(max-width:1150px){
   .sidebar { width: 72px; overflow-x: hidden; }
   .sidebar ul li a { justify-content: center; padding: 15px 0; gap: 0; }
-  .sidebar ul li a span, .sidebar ul li a text { display: none; } /* Fallback text hidden if separate */
-  /* Hide the link text completely for standard sidebar structures */
+  .sidebar ul li a span, .sidebar ul li a text { display: none; }
   .sidebar ul li a { font-size: 0; }
   .sidebar ul li a i { font-size: 16px; width: auto; }
+  
+  /* Stacks panels on smaller layout settings cleanly */
+  .charts-grid { grid-template-columns: 1fr; }
 }
 
 @media(max-width:750px){
